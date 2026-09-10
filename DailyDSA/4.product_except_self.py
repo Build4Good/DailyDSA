@@ -18,9 +18,28 @@ from typing import List
 
 
 def product_except_self(nums: List[int]) -> List[int]:
-    # TODO: implement your solution here
-    pass
+    prd_left=[1]*len(nums)
+    prd_right=[1]*len(nums)
+    current_mul=1
+    ## try to create left product table=
 
+    for i in range(1,len(nums)):
+        current_mul=current_mul*nums[i-1]
+        prd_left[i]=current_mul
+
+    ## try to create right product table
+    current_mul=1
+    for i in range(len(nums)-2,-1,-1):
+        current_mul =current_mul*nums[i+1]
+        prd_right[i]=current_mul
+
+
+    list_prd=[1]*len(nums)
+    # return [prd_left*prd_right]  
+    for i in range(len(nums)):
+        list_prd[i]=prd_left[i]*prd_right[i]
+
+    return list_prd
 
 # ─────────────────────────────────────────────
 # Test cases — run this file directly to check yourself
