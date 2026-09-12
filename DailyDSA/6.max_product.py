@@ -15,14 +15,17 @@ from typing import List
 
 
 def max_product(nums: List[int]) -> int:
-    current_product=nums[0]
-    min_product=nums[0]
-    mx_product=nums[0]
+    
+    running_min_product=nums[0]
+    running_mx_product=nums[0]
+    total_mx=nums[0]
     for i in range(1,len(nums)):
-        
-        mx_product=max(current_product*nums[i],nums[i],min_product*nums[i],mx_product)
-        min_product=min(current_product*nums[i],min_product*nums[i])
-    return mx_product
+        candidates=(nums[i],running_mx_product*nums[i],running_min_product*nums[i])
+        running_mx_product=max(candidates)
+        running_min_product=min(candidates)
+        total_mx=max(running_mx_product,total_mx)
+       
+    return total_mx
 
 # ─────────────────────────────────────────────
 # Test cases — run this file directly to check yourself
