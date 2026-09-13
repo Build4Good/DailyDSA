@@ -41,7 +41,7 @@ def search(nums: List[int], target: int) -> int:
                             ### target is not ins orted half and also not equal to mid so r can be till mid -1 
                 r=mid
 
-    return  l if target in nums else -1      
+    return  l if nums[l]==target else -1     
 
 
 # ─────────────────────────────────────────────
