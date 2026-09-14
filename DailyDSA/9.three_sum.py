@@ -18,24 +18,27 @@ from typing import List
 
 def three_sum(nums: List[int]) -> List[List[int]]:
     nums.sort()
-    dict_complement={}
     list_comp=[]
-    for i in range(len(nums)-1):
-        if nums[i]==nums[i+1]:
+    for i in range(len(nums)):
+        if i>0 and nums[i]==nums[i-1]:
             continue
         else:
-            target= nums[i]*-1
-            for j in range(i+1,len(nums)-1):
-                if nums[j]==nums[j+1]:
-                    continue
-                else:
-                    complement = target - nums[j]
+            l=i+1
+            r=len(nums)-1
+            while l<r:
+                total = nums[i]+nums[l]+nums[r]
 
-                    if complement in dict_complement:
-                        list_comp.append([dict_complement[complement],nums[j]])
-                    else:
-                        dict_complement.setdefault(-complement,[]).append([nums[i],nums[j]])
-                       #since get empty list and add indices of those
+                if total>0:
+                    r-=1
+                elif total<0:
+                    l+=1
+                else:
+                    list_comp.append([nums[i],nums[l],nums[r]])
+                    l+=1
+                    while nums[l]==nums[l-1] and l<r:
+                        l+=1
+
+
     return list_comp
 
 # ─────────────────────────────────────────────
