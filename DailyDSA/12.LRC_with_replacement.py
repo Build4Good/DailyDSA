@@ -30,7 +30,7 @@ def character_replacement(s: str, k: int) -> int:
         max_frq=max(max_frq,count[s[r]])
 
         while (r-l+1)-max_frq>k:
-            count[s[l]]-=1
+            count[s[l]]-=1   ### I dont think even decrementing this count is needed since we always compare with maxf and once we have only dealt with a higher of maxf 
             l+=1
         res=max(res,r-l+1)
 
