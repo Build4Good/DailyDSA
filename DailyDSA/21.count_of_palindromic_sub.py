@@ -17,8 +17,24 @@ Example:
 
 
 def count_substrings(s: str) -> int:
-    # TODO: implement your solution here
-    pass
+    count=0
+
+    for i in range(len(s)):
+        ### odd length palindrome 
+        l,r=i,i
+        while l>=0 and r <len(s) and (s[l]==s[r]):
+            count+=1
+            l-=1
+            r+=1
+
+        ### for even length 
+        l,r=i,i+1
+        while l>=0 and r <len(s) and (s[l]==s[r]):
+            count+=1
+            l-=1
+            r+=1
+
+    return count
 
 
 # ─────────────────────────────────────────────
