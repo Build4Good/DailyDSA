@@ -14,7 +14,7 @@ def three_sum(nums: List[int]) -> List[List[int]]:
         l=i+1
         r=len(nums)-1
 
-        if nums[i]==nums[i-1] and i>0:
+        if i>0 and nums[i]==nums[i-1]:
             continue
 
         while l<r:
