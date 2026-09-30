@@ -17,7 +17,17 @@ Try both approaches:
 
 def hamming_weight(n: int) -> int:
     # TODO: implement your solution here
-    pass
+    res=0
+    
+
+    while n:
+
+        if n%2==1:
+            res+=1
+
+        n = n>>1
+
+    return res        
 
 
 def run_tests():
