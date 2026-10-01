@@ -20,13 +20,15 @@ def hamming_weight(n: int) -> int:
     res=0
     
 
+    # while n:
+
+    #     if n%2==1:
+    #         res+=1
+
+    #     n = n>>1
     while n:
-
-        if n%2==1:
-            res+=1
-
-        n = n>>1
-
+        n = n & (n - 1)   # drops the lowest set bit
+        res += 1
     return res        
 
 
