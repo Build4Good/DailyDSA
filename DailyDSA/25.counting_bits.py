@@ -9,7 +9,15 @@ from typing import List
 
 def count_bits(n: int) -> List[int]:
     # TODO
-    pass
+    ans=[0]*(n+1)
+    current_offset=1  #2 power 0 in begining 
+    for i in range(1,n+1):
+        if current_offset*2 == i:
+            current_offset=i
+
+        ans[i]=1+ans[i-current_offset]    
+    return ans
+    
 
 
 def run_tests():

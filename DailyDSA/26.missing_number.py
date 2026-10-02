@@ -10,9 +10,13 @@ from typing import List
 
 def missing_number(nums: List[int]) -> int:
     # TODO
-    pass
+    ## implementing with sum based approach 
+    res=len(nums)
 
+    for i in range (len(nums)):
+        res+= i-nums[i]
 
+    return res
 def run_tests():
     tests = [([3, 0, 1], 2), ([0, 1], 2), ([9, 6, 4, 2, 3, 5, 7, 0, 1], 8),
              ([0], 1), ([1], 0), ([1, 2], 0)]
