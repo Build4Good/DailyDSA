@@ -12,11 +12,17 @@ def missing_number(nums: List[int]) -> int:
     # TODO
     ## implementing with sum based approach 
     res=len(nums)
+    # #approach 1 
+    # for i in range (len(nums)):
+    #     res+= i-nums[i]
 
-    for i in range (len(nums)):
-        res+= i-nums[i]
+    # return res
 
-    return res
+    #Now lets do XOR approach .
+    for i in range(len(nums)):
+        res ^= i^nums[i]
+
+    return res    
 def run_tests():
     tests = [([3, 0, 1], 2), ([0, 1], 2), ([9, 6, 4, 2, 3, 5, 7, 0, 1], 8),
              ([0], 1), ([1], 0), ([1, 2], 0)]
