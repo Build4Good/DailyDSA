@@ -8,15 +8,25 @@ from typing import List
 def single_number(nums: List[int]) -> int:
     """P4. LeetCode 136. Every number appears twice except one. Find it.
     O(n) time, O(1) space."""
-    # TODO
-    pass
-
+    number=0
+    for num in nums:
+        number=number^num
+    return number
 
 def hamming_distance(x: int, y: int) -> int:
     """P5. LeetCode 461. In how many bit positions do x and y differ?
     Hint: which operator gives 1 exactly where two bits differ?"""
-    # TODO
-    pass
+    z=x^y
+    i=0
+    res=0
+    while i<32:
+        if z%2==1:
+            res+=1
+        z=z>>1    
+        i+=1
+        
+
+    return res
 
 
 def is_power_of_four(n: int) -> bool:
@@ -24,7 +34,7 @@ def is_power_of_four(n: int) -> bool:
     1 = 1, 4 = 100, 16 = 10000 are powers of four; 2 = 10 and 8 = 1000 are not.
     Hint: 0x55555555 = 0101...0101 has 1s only at even positions."""
     # TODO
-    pass
+    return n > 0 and n & (n - 1) == 0 and (n & 0x55555555) != 0
 
 
 def find_complement(num: int) -> int:
@@ -32,7 +42,11 @@ def find_complement(num: int) -> int:
     5 (101) -> 2 (010).   Hint: build a mask of all 1s exactly as wide as num
     (num.bit_length() tells you how wide), then flip with XOR."""
     # TODO
-    pass
+    
+    mask=0
+    for i in range(0,num.bit_length()):
+        mask = mask|1<<i
+    return mask^num  
 
 
 def run_tests():
