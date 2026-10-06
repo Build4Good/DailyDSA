@@ -9,8 +9,15 @@ def subsets(nums: List[int]) -> List[List[int]]:
     For n items, loop mask from 0 to 2^n - 1 (that's 1 << n masks).
     Bit i of the mask ON  ->  nums[i] is in this subset.
     [a, b, c]:  mask 101 -> [a, c]"""
-    # TODO
-    pass
+    result=[]
+    for num in range (1<<len(nums)):
+        lst=[]
+        for i in range(0,len(nums)):
+            if num & (1<<i) !=0:
+                lst.append(nums[i])
+        result.append(lst)        
+    return result
+   
 
 
 def single_number_iii(nums: List[int]) -> List[int]:
