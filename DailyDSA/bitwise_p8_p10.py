@@ -49,7 +49,14 @@ def range_bitwise_and(left: int, right: int) -> int:
     Hint: the answer is the common binary PREFIX of left and right, padded with zeros.
     Shift both right until they're equal, counting the shifts; then shift back."""
     # TODO
-    pass
+    shift=0
+
+    while left != right:
+        left =left>>1
+        right=right>>1
+        shift+=1
+
+    return left<<shift    
 
 
 def run_tests():
