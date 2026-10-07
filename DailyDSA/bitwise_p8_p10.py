@@ -26,8 +26,21 @@ def single_number_iii(nums: List[int]) -> List[int]:
     Hint 1: XOR everything -> you get a ^ b (the pairs cancel).
     Hint 2: any 1 bit in a ^ b is a position where a and b DIFFER. Grab one with x & -x.
     Hint 3: split nums into two groups by that bit; XOR each group separately."""
-    # TODO
-    pass
+    x=0
+    a=0
+    b=0
+    for num in nums:
+        x^=num
+    bit = x & (-x)
+
+    for num in nums:
+        if bit & num ==0:
+            a^=num
+        else:
+            b^=num
+
+    return [a,b]            
+
 
 
 def range_bitwise_and(left: int, right: int) -> int:
