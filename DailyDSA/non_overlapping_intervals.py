@@ -26,15 +26,18 @@ class Solution:
 
         previous_interval_high=intervals_up[0][-1]
         count=0
+       
         for i in range(1,len(intervals_up)):
 
+          
             if intervals_up[i][0]<previous_interval_high:
                 count+=1
+                previous_interval_high=min(previous_interval_high, intervals_up[i][1])
                 
             else:
                 previous_interval_high=intervals_up[i][1]    
 
-        return min(count,len(intervals_up)-count)
+        return count
 # ─────────────────────────────────────────────
 # Test cases — run this file directly to check yourself
 # ─────────────────────────────────────────────
