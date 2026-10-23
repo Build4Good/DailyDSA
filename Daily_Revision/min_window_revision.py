@@ -13,7 +13,33 @@ from collections import Counter
 
 def min_window(s: str, t: str) -> str:
     # TODO
-    pass
+    need =Counter(t)
+    window={}
+    need_count=len(need)
+    have_count=0
+    l,r=0,0
+    best_l,best_r=0,len(s)+1
+    while r<len(s):
+        window[s[r]]=window.get(s[r],0)+1
+        if s[r] in need and window[s[r]]==need[s[r]]:       #("ADOBECODEBANC", "ABC", "BANC"),
+            have_count+=1
+        while need_count==have_count:
+            if (r-l+1)<best_r-best_l+1:
+                best_r=r
+                best_l=l
+            if s[l] in need:
+                if window[s[l]]==need[s[l]]:
+                    have_count-=1
+                    window[s[l]]-=1
+                else:
+                    window[s[l]]-=1   
+
+            l+=1    
+        r+=1
+
+    return s[best_l:best_r+1] if best_r-best_l<len(s)+1 else ""
+
+
 
 
 def _valid(sub, t):
