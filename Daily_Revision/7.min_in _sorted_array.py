@@ -22,14 +22,15 @@ def find_min(nums: List[int]) -> int:
     r=len(nums)-1
 
     while l < r:
-        mid = (l + r) // 2
-        if nums[mid] < nums[r]:
-            r = mid          # min is mid or to its left
+        mid=(l+r)//2
+
+        if nums[r]>nums[mid]:
+            #right side is sorted 
+            r=mid
         else:
-            l = mid + 1      # min is to the right of mid
+            l=mid+1    
+
     return nums[l]
-
-
 
 # ─────────────────────────────────────────────
 # Test cases — run this file directly to check yourself
